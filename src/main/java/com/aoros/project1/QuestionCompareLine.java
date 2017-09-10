@@ -7,6 +7,7 @@ public class QuestionCompareLine {
     private final int qid2;
     private final String question1;
     private final String question2;
+    private Integer isDuplicate;
 
     public QuestionCompareLine(int id, int qid1, int qid2, String question1, String question2) {
         this.id = id;
@@ -36,8 +37,16 @@ public class QuestionCompareLine {
         return question2;
     }
 
+    public Integer getIsDuplicate() {
+        return isDuplicate;
+    }
+
+    public void setIsDuplicate(boolean areSame) {
+        isDuplicate = areSame ? 1 : 0;
+    }
+
     @Override
     public String toString() {
-        return "QuestionCompareLine{" + "id=" + id + ", qid1=" + qid1 + ", qid2=" + qid2 + ", question1=" + question1 + ", question2=" + question2 + '}';
+        return id + "," + isDuplicate;
     }
 }
