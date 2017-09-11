@@ -1,7 +1,6 @@
 package com.aoros.project1;
 
 import com.aoros.project1.strategy.ComparisonStrategy;
-import com.aoros.project1.strategy.LiteralExactMatchComparisonStrategy;
 import com.opencsv.CSVReader;
 import com.opencsv.CSVWriter;
 import java.io.FileReader;
@@ -41,7 +40,7 @@ public class QuestionComparisonProcessor {
         }
     }
 
-    public void addToStrategyList(LiteralExactMatchComparisonStrategy exactMatchComparisonStrategy) {
+    public void addToStrategyList(ComparisonStrategy exactMatchComparisonStrategy) {
         strategies.add(exactMatchComparisonStrategy);
     }
 

@@ -1,6 +1,6 @@
 package com.aoros.project1;
 
-import com.aoros.project1.strategy.LiteralExactMatchComparisonStrategy;
+import com.aoros.project1.strategy.ThreeGramComparisonStrategy;
 
 public class Main {
 
@@ -10,7 +10,7 @@ public class Main {
 
         QuestionComparisonProcessor processor = new QuestionComparisonProcessor();
         processor.readFile(csvFile);
-        processor.addToStrategyList(new LiteralExactMatchComparisonStrategy());
+        processor.addToStrategyList(new ThreeGramComparisonStrategy());
         processor.processUntilFoundOrDone();
         processor.exportResults(path);
     }
