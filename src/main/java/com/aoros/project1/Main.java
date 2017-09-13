@@ -1,6 +1,6 @@
 package com.aoros.project1;
 
-import com.aoros.project1.strategy.ThreeGramComparisonStrategy;
+import com.aoros.project1.strategy.SimpleTriGramComparisonStrategy;
 
 public class Main {
 
@@ -10,7 +10,7 @@ public class Main {
 
         QuestionComparisonProcessor processor = new QuestionComparisonProcessor();
         processor.readFile(csvFile);
-        processor.addToStrategyList(new ThreeGramComparisonStrategy());
+        processor.addToStrategyList(new SimpleTriGramComparisonStrategy());
         processor.processUntilFoundOrDone();
         processor.exportResults(path);
     }

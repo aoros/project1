@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
-public class ThreeGramComparisonStrategy implements ComparisonStrategy {
+public class SimpleTriGramComparisonStrategy implements ComparisonStrategy {
 
     private static final Double SAME_SCORE_THRESHOLD = 0.05d;
 
