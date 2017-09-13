@@ -1,6 +1,7 @@
 package com.aoros.project1;
 
 import com.aoros.project1.strategy.ComparisonStrategy;
+import com.aoros.project1.strategy.TF_IDF_CosineSimilarityComparisonStrategy;
 import com.opencsv.CSVReader;
 import com.opencsv.CSVWriter;
 import java.io.FileReader;
@@ -49,14 +50,27 @@ public class QuestionComparisonProcessor {
      * strategy has identified questions that are the same, then it won't be
      * processed for remaining strategies.
      */
-    public void processUntilFoundOrDone() {
-        questionData.forEach((line) -> {
-            strategies.stream()
-                    .filter((strategy) -> (line.getIsDuplicate() == null || line.getIsDuplicate() == 0))
-                    .forEachOrdered((strategy) -> {
-                        line.setIsDuplicate(strategy.areQuestionsTheSame(line.getQuestion1(), line.getQuestion2()));
-                    });
-        });
+    public void processMultipleStrategies() {
+        for (QuestionCompareLine line : questionData) {
+            for (ComparisonStrategy strategy : strategies) {
+                if (line.getIsDuplicate() == null || line.getIsDuplicate() == 0) {
+                    line.setIsDuplicate(strategy.areQuestionsTheSame(line.getQuestion1(), line.getQuestion2()));
+                }
+            }
+        }
+    }
+
+    public void processOneStrategy(String strategy) {
+        ComparisonStrategy comparisonStrategy;
+        if (strategy.equals("TF_IDF_CosineSimilarityComparisonStrategy")) {
+            comparisonStrategy = new TF_IDF_CosineSimilarityComparisonStrategy(questionData);
+        } else {
+            comparisonStrategy = strategies.get(0);
+        }
+
+        for (QuestionCompareLine line : questionData) {
+            line.setIsDuplicate(comparisonStrategy.areQuestionsTheSame(line.getQuestion1(), line.getQuestion2()));
+        }
     }
 
     public void exportResults(String path) {

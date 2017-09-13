@@ -1,17 +1,14 @@
 package com.aoros.project1;
 
-import com.aoros.project1.strategy.SimpleTriGramComparisonStrategy;
-
 public class Main {
 
     public static void main(String[] args) {
-        String path = "C:/Users/Lappie/Documents/BSU/CS568/";
+        String path = "F:/Users/Daddio/Documents/NetBeansProjects/Data/project1_data/";
         String csvFile = path + "test.csv";
 
         QuestionComparisonProcessor processor = new QuestionComparisonProcessor();
         processor.readFile(csvFile);
-        processor.addToStrategyList(new SimpleTriGramComparisonStrategy());
-        processor.processUntilFoundOrDone();
-        processor.exportResults(path);
+        processor.processOneStrategy("TF_IDF_CosineSimilarityComparisonStrategy");
+//        processor.exportResults(path);
     }
 }

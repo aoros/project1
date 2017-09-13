@@ -9,7 +9,7 @@ import opennlp.tools.sentdetect.SentenceModel;
 public class SentenceDetectorMECreator {
 
     private final SentenceDetectorME detector;
-    private final String modelInputFileAndPath = "C:/Users/Lappie/Documents/BSU/CS568/OpenNLP_model/en-sent.bin";
+    private final String modelInputFileAndPath = "F:/Users/Daddio/Documents/NetBeansProjects/school/project1/en-sent.bin";
 
     public SentenceDetectorMECreator() {
         try {
